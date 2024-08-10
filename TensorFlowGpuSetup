@@ -1,0 +1,24 @@
+****************** Installation Instructions for TensorFlow GPU ******************
+
+Q. Why Use TensorFlow with GPU?
+Using TensorFlow with GPU can significantly accelerate the training of machine learning models compared to using CPU alone. For students and researchers who may not have access to high-end cloud services, leveraging a local GPU can be a cost-effective and efficient way to boost model performance. In our experience, using a local GPU (like the NVIDIA GeForce GTX 1650 Ti) for training a basic sequential model has shown a time advantage of up to half the time compared to using TPU v2 CPU on Google Colab.
+
+Specific Version Requirements
+It’s crucial to use specific versions of CUDA, cuDNN, and TensorFlow that are compatible with each other to ensure that TensorFlow can properly utilize the GPU. The versions listed below have been tested and verified to work together effectively:
+
+CUDA Toolkit 11.2: This is a parallel computing platform and application programming interface (API) model created by NVIDIA. It provides support for running computations on NVIDIA GPUs.
+cuDNN 8.1.0: The NVIDIA CUDA Deep Neural Network library (cuDNN) is a GPU-accelerated library for deep neural networks. It works in tandem with CUDA to optimize performance for deep learning frameworks.
+TensorFlow 2.10: This version of TensorFlow includes enhancements and optimizations for better performance and compatibility with the specified CUDA and cuDNN versions.
+
+** INSTALL **
+	1. conda create -n pygpuenv python=3.10
+	2. conda activate pygpuenv
+	3. conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+	4. python -m pip install "tensorflow=2.10"
+
+** Test GPU **
+
+	import tensorflow as tf
+	tf.config.list_physical_devices('GPU')
+	
+	tf.test.is_gpu_available()
